@@ -17,7 +17,10 @@ const getAllArticles = (req, res) => {
 }
 
 const getArticleBySlug = (req, res) => {
-    models.Article.findOne({ where: { slug: req.params.slug }, include: [{ model: models.Author}], })
+    models.Article.findOne({
+        where: { slug: req.params.slug },
+        include: [{ model: models.Author, as: 'author' }]
+    })
     .then(article =>{
         console.log(article)
         return res.status(200).json({ article });

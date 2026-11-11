@@ -34,7 +34,11 @@ module.exports = {
         createdAt: now,
         updatedAt: now
       }
-    ], { ignoreDuplicates: true });
+    ], {
+      updateOnDuplicate: [
+        'name', 'image', 'body', 'published', 'author_id', 'updatedAt'
+      ]
+    });
   },
 
   async down(queryInterface) {
