@@ -1,0 +1,17 @@
+'use strict';
+
+module.exports = {
+  async up(queryInterface) {
+    await queryInterface.bulkInsert('author', [
+      { id: 1, name: 'Ashley Galvin' },
+      { id: 2, name: 'Patrick Beach' },
+      { id: 3, name: 'MacKenzie Miller' }
+    ]);
+  },
+
+  async down(queryInterface) {
+    await queryInterface.bulkDelete('author', {
+      id: [1, 2, 3]
+    });
+  }
+};
