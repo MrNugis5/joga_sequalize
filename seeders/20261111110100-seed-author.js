@@ -6,7 +6,7 @@ module.exports = {
       { id: 1, name: 'Ashley Galvin' },
       { id: 2, name: 'Patrick Beach' },
       { id: 3, name: 'MacKenzie Miller' }
-    ]);
+    ], { ignoreDuplicates: true });
   },
 
   async down(queryInterface) {
