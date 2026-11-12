@@ -19,7 +19,17 @@ const getAllArticles = (req, res) => {
 const getArticleBySlug = (req, res) => {
     models.Article.findOne({
         where: { slug: req.params.slug },
-        include: [{ model: models.Author, as: 'author' }]
+        include: [
+            {
+                model: models.Author,
+                as: 'author'
+            },
+            {
+                model: models.ArticleTags,
+                as: 'articleTags',
+                attributes: ['articleId', 'tagId']
+            }
+        ]
     })
     .then(article =>{
         console.log(article)
@@ -29,6 +39,7 @@ const getArticleBySlug = (req, res) => {
         return res.status(500).send(err.message);
     } )
 }
+
 
 module.exports = {
     getAllArticles,
